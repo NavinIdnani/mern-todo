@@ -8,7 +8,7 @@
   "main": "server.js",
   "scripts": {
     "start": "node server.js",
-    "build": "npm install --legacy-peer-deps --prefix ./client && npm run build --prefix ./client && npm install --legacy-peer-deps"
+    "build": "npm cache clean --force && npm install --legacy-peer-deps --prefix ./client && npm run build --prefix ./client && npm install --legacy-peer-deps"
   },
   "dependencies": {
     "body-parser": "^1.20.3",
