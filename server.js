@@ -22,7 +22,12 @@ app.use(express.static(path.join(__dirname,'/client/dist')))
 app.get('*',(req,res) => res.sendFile(path.join(__dirname,'/client/dist/index.html')))
 
 
-app.use(cors());
+app.use(cors({
+  origin: allowedOrigins,
+  credentials: true,
+  methods: ['GET', 'POST', 'PUT', 'DELETE'],
+  allowedHeaders: ['Content-Type', 'Authorization']
+}));
 
 app.use(bodyParser.json({extended:true}));
 app.use(bodyParser.urlencoded({extended:true}))
