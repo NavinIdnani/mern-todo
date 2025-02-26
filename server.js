@@ -20,11 +20,13 @@ const __dirname = path.dirname(__filename);
 
 const app=express();
 
-
+const allowedOrigins = [
+  'https://mern-todo-iljn.onrender.com'
+];
 
 
 app.use(cors({
-  origin: process.env.CLIENT_URL || '*',
+  origin: allowedOrigins,
   credentials: true,
   methods: ['GET', 'POST', 'PUT', 'DELETE'],
   allowedHeaders: ['Content-Type', 'Authorization']
