@@ -42,7 +42,7 @@ const PORT=process.env.PORT || 8000;
 
 app.listen(PORT,() => console.log(`Your server is runing successfully on PORT ${PORT}`));
 
-const USERNAME=process.env.DB_USERNAME;
+const USERNAME=process.env.DB_USERNAME;    
 const PASSWORD=process.env.DB_PASSWORD;
 
 const URL=`mongodb+srv://${USERNAME}:${PASSWORD}@mern-todo.qnc63.mongodb.net/?retryWrites=true&w=majority`;
