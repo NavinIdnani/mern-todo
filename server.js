@@ -34,7 +34,7 @@ app.use(bodyParser.urlencoded({extended:true}))
 
 app.use('/',Routes);
 
-const PORT=8000;
+const PORT=process.env.PORT || 8000;
 Connection();
 
 app.listen(PORT,() => console.log(`Your server is runing successfully on PORT ${PORT}`));
