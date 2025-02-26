@@ -9,6 +9,7 @@ import Routes from './routes/route.js';
 import path from 'path';
 import { fileURLToPath } from 'url';
 
+dotenv.config();
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename); 
@@ -21,7 +22,7 @@ const app=express();
 
 
 app.use(cors({
-  origin: allowedOrigins,
+  origin: process.env.CLIENT_URL || *,
   credentials: true,
   methods: ['GET', 'POST', 'PUT', 'DELETE'],
   allowedHeaders: ['Content-Type', 'Authorization']
@@ -38,6 +39,12 @@ if(process.env.NODE_ENV === 'production') {
 app.use('*',(req,res) => res.sendFile(path.join(__dirname,'/client/dist/index.html')))
 
 const PORT=process.env.PORT || 8000;
-Connection();
 
 app.listen(PORT,() => console.log(`Your server is runing successfully on PORT ${PORT}`));
+
+const USERNAME=process.env.DB_USERNAME;
+const PASSWORD=process.env.DB_PASSWORD;
+
+const URL=process.env.MONGODB_URI || `mongodb+srv://${USERNAME}:${PASSWORD}@blog-app.avvgj.mongodb.net/`;
+
+Connection(URL);
